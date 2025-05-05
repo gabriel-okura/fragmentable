@@ -9,7 +9,7 @@ extension ConvertToModelClassFragmentable on Fragment2 {
   );
 }
 ''')
-@Fragmentable(fragmentType: Fragment2)
+@Fragmentable(fragment: Fragment2)
 class ConvertToModelClass {
   @FragmentableKey(shouldConvertToModel: true, name: 'classFragment')
   final EmptyClass emptyClass;

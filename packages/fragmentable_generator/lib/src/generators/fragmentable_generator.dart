@@ -18,7 +18,7 @@ class FragmentableGenerator extends GeneratorForAnnotation<Fragmentable> {
       );
     }
 
-    final fragmentType = annotation.read('fragmentType').typeValue;
+    final fragmentType = annotation.read('fragment').typeValue;
 
     return FragmentableExtensionGenerator.generate(
       element: element,

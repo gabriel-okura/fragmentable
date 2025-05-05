@@ -1,0 +1,8 @@
+builders:
+  fragmentable:
+    import: "package:fragmentable_generator/fragmentable_generator.dart"
+    builder_factories: ["fragmentableBuilder"]
+    build_extensions: {".dart": [".fragmentable.dart"]}
+    auto_apply: dependents
+    build_to: source
+    applies_builders: ["source_gen|combining_builder"]

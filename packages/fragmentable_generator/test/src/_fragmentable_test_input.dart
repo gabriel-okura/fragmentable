@@ -8,7 +8,7 @@ extension EmptyClassFragmentable on Fragment {
   EmptyClass toModel() => EmptyClass();
 }
 ''')
-@Fragmentable(fragmentType: Fragment)
+@Fragmentable(fragment: Fragment)
 class EmptyClass {}
 
 @ShouldGenerate(r'''
@@ -16,7 +16,7 @@ extension SingleFieldClassFragmentable on Fragment {
   SingleFieldClass toModel() => SingleFieldClass(name: name);
 }
 ''')
-@Fragmentable(fragmentType: Fragment)
+@Fragmentable(fragment: Fragment)
 class SingleFieldClass {
   final String name;
 
@@ -28,7 +28,7 @@ extension IgnoreFieldClassFragmentable on Fragment {
   IgnoreFieldClass toModel() => IgnoreFieldClass();
 }
 ''')
-@Fragmentable(fragmentType: Fragment)
+@Fragmentable(fragment: Fragment)
 class IgnoreFieldClass {
   @FragmentableKey(ignore: true)
   final String? name;
@@ -41,7 +41,7 @@ extension CustomFieldNameClassFragmentable on Fragment {
   CustomFieldNameClass toModel() => CustomFieldNameClass(name: customFieldName);
 }
 ''')
-@Fragmentable(fragmentType: Fragment)
+@Fragmentable(fragment: Fragment)
 class CustomFieldNameClass {
   @FragmentableKey(name: 'customFieldName')
   final String name;

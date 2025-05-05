@@ -1,7 +1,6 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
 import 'package:code_builder/code_builder.dart';
-import 'package:collection/collection.dart';
 import 'package:fragmentable_annotation/fragmentable_annotation.dart';
 import 'package:fragmentable_generator/src/fragmentable_key_utils.dart';
 

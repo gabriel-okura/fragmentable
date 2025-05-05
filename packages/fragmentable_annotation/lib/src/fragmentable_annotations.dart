@@ -2,9 +2,9 @@ import 'package:meta/meta_meta.dart';
 
 @Target({TargetKind.classType})
 class Fragmentable {
-  const Fragmentable({required this.fragmentType});
+  const Fragmentable({required this.fragment});
 
-  final Type fragmentType;
+  final Type fragment;
 }
 
 @Target({TargetKind.field})
