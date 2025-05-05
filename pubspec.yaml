@@ -1,0 +1,12 @@
+name: tractian_convertable_workspace
+
+publish_to: none
+
+environment:
+  sdk: '>=3.5.0 <4.0.0'
+dev_dependencies:
+  melos: ^6.3.2
+
+workspace:
+  - packages/fragmentable_annotation
+  - packages/fragmentable_generator
