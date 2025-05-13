@@ -1,19 +1,19 @@
 part of '_fragmentable_test_input.dart';
 
 @ShouldGenerate(r'''
-extension ConvertListsClassFragmentable on Fragment2 {
-  ConvertListsClass toModel() => ConvertListsClass(isActive: isActive);
+extension ListClassFragmentable on Fragment2 {
+  ListClass toModel() => ListClass(isActive: isActive);
 }
 
-extension ConvertListsClassFragmentable on List<Fragment2> {
-  List<ConvertListsClass> toModels() => map((e) => e.toModel()).toList();
+extension ListClassFragmentableFromList on List<Fragment2> {
+  List<ListClass> toModels() => map((e) => e.toModel()).toList();
 }
 ''')
 @Fragmentable(fragment: Fragment2, generateListExtension: true)
-class ConvertListsClass {
+class ListClass {
   final bool isActive;
 
-  ConvertListsClass({
+  ListClass({
     required this.isActive,
   });
 }

@@ -17,3 +17,7 @@ extension Fragment2ModelFragmentable on Fragment2 {
     isActive: isActive,
   );
 }
+
+extension Fragment2ModelFragmentableFromList on List<Fragment2> {
+  List<Fragment2Model> toModels() => map((e) => e.toModel()).toList();
+}

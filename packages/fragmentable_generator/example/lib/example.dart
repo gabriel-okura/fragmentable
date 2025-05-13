@@ -9,7 +9,7 @@ class FragmentModel {
   FragmentModel({required this.name});
 }
 
-@Fragmentable(fragment: Fragment2)
+@Fragmentable(fragment: Fragment2, generateListExtension: true)
 class Fragment2Model {
   @FragmentableKey(name: 'classFragment', shouldConvertToModel: true)
   final FragmentModel model;

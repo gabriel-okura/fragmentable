@@ -33,7 +33,7 @@ class FragmentableExtensionGenerator {
 
     final listExtension = Extension(
       (builder) => builder
-        ..name = '${element.name}Fragmentable'
+        ..name = '${element.name}FragmentableFromList'
         ..on = refer('List<${fragmentType.getDisplayString()}>')
         ..methods.add(
           Method(
