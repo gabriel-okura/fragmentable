@@ -3,6 +3,7 @@ import 'package:source_gen_test/source_gen_test.dart';
 
 part 'convert_lists_test_input.dart';
 part 'convert_to_model_test_input.dart';
+part 'complex_list_test_input.dart';
 
 @ShouldGenerate(r'''
 extension EmptyClassFragmentable on Fragment {

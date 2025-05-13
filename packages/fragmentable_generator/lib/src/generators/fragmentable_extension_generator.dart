@@ -70,9 +70,12 @@ class FragmentableExtensionGenerator {
     }
 
     final propertyName = fragmentableKey.name ?? field.name;
+    final isListType = field.type.isDartCoreList;
+
+    final propertyGetterName = isListType ? 'toModels()' : 'toModel()';
 
     if (fragmentableKey.shouldConvertToModel) {
-      return Code('${field.name}: $propertyName.toModel(),');
+      return Code('${field.name}: $propertyName.$propertyGetterName,');
     }
 
     return Code('${field.name}: $propertyName,');
