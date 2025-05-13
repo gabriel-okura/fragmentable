@@ -1,6 +1,7 @@
 import 'package:fragmentable_annotation/fragmentable_annotation.dart';
 import 'package:source_gen_test/source_gen_test.dart';
 
+part 'convert_lists_test_input.dart';
 part 'convert_to_model_test_input.dart';
 
 @ShouldGenerate(r'''

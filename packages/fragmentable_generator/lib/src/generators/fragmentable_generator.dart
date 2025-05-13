@@ -19,10 +19,13 @@ class FragmentableGenerator extends GeneratorForAnnotation<Fragmentable> {
     }
 
     final fragmentType = annotation.read('fragment').typeValue;
+    final shouldGenerateListExtension =
+        annotation.read('generateListExtension').boolValue;
 
     return FragmentableExtensionGenerator.generate(
       element: element,
       fragmentType: fragmentType,
+      shouldGenerateListExtension: shouldGenerateListExtension,
     );
   }
 }

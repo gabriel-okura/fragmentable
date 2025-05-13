@@ -8,33 +8,58 @@ class FragmentableExtensionGenerator {
   static String generate({
     required ClassElement element,
     required DartType fragmentType,
+    required bool shouldGenerateListExtension,
   }) {
-    final extension = Extension(
-      (builder) =>
-          builder
-            ..name = '${element.name}Fragmentable'
-            ..on = refer(fragmentType.getDisplayString())
-            ..methods.add(
-              Method(
-                (builder) =>
-                    builder
-                      ..name = 'toModel'
-                      ..lambda = true
-                      ..returns = refer(element.name)
-                      ..body = Block(
-                        (builder) => builder.statements.addAll([
-                          Code('${element.name}('),
-                          ...element.fields.map(_printFields).nonNulls,
-                          Code(')'),
-                        ]),
-                      ),
+    final baseExtension = Extension(
+      (builder) => builder
+        ..name = '${element.name}Fragmentable'
+        ..on = refer(fragmentType.getDisplayString())
+        ..methods.add(
+          Method(
+            (builder) => builder
+              ..name = 'toModel'
+              ..lambda = true
+              ..returns = refer(element.name)
+              ..body = Block(
+                (builder) => builder.statements.addAll([
+                  Code('${element.name}('),
+                  ...element.fields.map(_printFields).nonNulls,
+                  Code(')'),
+                ]),
               ),
-            ),
+          ),
+        ),
+    );
+
+    final listExtension = Extension(
+      (builder) => builder
+        ..name = '${element.name}Fragmentable'
+        ..on = refer('List<${fragmentType.getDisplayString()}>')
+        ..methods.add(
+          Method(
+            (builder) => builder
+              ..name = 'toModels'
+              ..lambda = true
+              ..returns = refer('List<${element.name}>')
+              ..body = Block(
+                (builder) => builder.statements.addAll([
+                  Code('map((e) => e.toModel()).toList()'),
+                ]),
+              ),
+          ),
+        ),
     );
 
     final emitter = DartEmitter.scoped(useNullSafetySyntax: true);
+    final result = StringBuffer();
 
-    return '${extension.accept(emitter)}';
+    result.writeln(baseExtension.accept(emitter));
+
+    if (shouldGenerateListExtension) {
+      result.writeln(listExtension.accept(emitter));
+    }
+
+    return result.toString();
   }
 
   static Code? _printFields(FieldElement field) {

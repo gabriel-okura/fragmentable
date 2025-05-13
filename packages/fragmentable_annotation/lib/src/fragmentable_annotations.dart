@@ -2,9 +2,16 @@ import 'package:meta/meta_meta.dart';
 
 @Target({TargetKind.classType})
 class Fragmentable {
-  const Fragmentable({required this.fragment});
+  const Fragmentable({
+    required this.fragment,
+    this.generateListExtension = false,
+  });
 
   final Type fragment;
+
+  /// If `true`, the generator will create an additional extension method
+  /// for converting a list of the class to a list of models.
+  final bool generateListExtension;
 }
 
 @Target({TargetKind.field})
