@@ -1,4 +1,4 @@
-name: tractian_convertable
+name: tractian_fragmentable
 packages:
   - packages/**
 
