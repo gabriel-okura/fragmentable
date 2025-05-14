@@ -8,15 +8,17 @@ part of 'example.dart';
 // **************************************************************************
 
 extension FragmentModelFragmentable on Fragment {
-  FragmentModel toModel() => FragmentModel(name: name);
+  FragmentModel toModel() => FragmentModel(
+        name: name,
+      );
 }
 
 extension Fragment2ModelFragmentable on Fragment2 {
   Fragment2Model toModel() => Fragment2Model(
-    model: classFragment.toModel(),
-    name: name,
-    isActive: isActive,
-  );
+        model: classFragment.toModel(),
+        name: name,
+        isActive: isActive,
+      );
 }
 
 extension Fragment2ModelFragmentableList on List<Fragment2> {
