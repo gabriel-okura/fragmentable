@@ -2,14 +2,13 @@ name: fragmentable_annotation
 description: >-
   Classes and helper functions that support Fragmentable code generation via the
   `tractian_fragmentable` package.
-version: 0.0.1
+version: 0.0.4
 
 environment:
-  sdk: '>=3.5.0 <4.0.0'
+  sdk: ^3.5.3
+  flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  meta: 1.16.0
-
-resolution: workspace
+  meta: 1.15.0
