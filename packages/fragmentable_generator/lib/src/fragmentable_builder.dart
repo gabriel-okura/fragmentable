@@ -4,11 +4,11 @@ import 'package:fragmentable_generator/src/generators/fragmentable_generator.dar
 import 'package:source_gen/source_gen.dart';
 
 Builder fragmentableBuilder(BuilderOptions options) => PartBuilder(
-  [FragmentableGenerator()],
-  '.fragmentable.dart',
-  options: options,
-  formatOutput:
-      (code, languageVersion) =>
+      [FragmentableGenerator()],
+      '.fragmentable.dart',
+      options: options,
+      formatOutput: (code, languageVersion) =>
           DartFormatter(languageVersion: languageVersion).format(code),
-  header: '// GENERATED CODE - DO NOT MODIFY BY HAND',
-);
+      header:
+          '// ignore_for_file: type=lint\n // GENERATED CODE - DO NOT MODIFY BY HAND',
+    );

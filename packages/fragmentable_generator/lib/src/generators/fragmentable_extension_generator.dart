@@ -33,7 +33,7 @@ class FragmentableExtensionGenerator {
 
     final listExtension = Extension(
       (builder) => builder
-        ..name = '${element.name}FragmentableFromList'
+        ..name = '${element.name}FragmentableList'
         ..on = refer('List<${fragmentType.getDisplayString()}>')
         ..methods.add(
           Method(
@@ -43,7 +43,33 @@ class FragmentableExtensionGenerator {
               ..returns = refer('List<${element.name}>')
               ..body = Block(
                 (builder) => builder.statements.addAll([
-                  Code('map((e) => e.toModel()).toList()'),
+                  Code('map((fragment) => fragment.toModel()).toList()'),
+                ]),
+              ),
+          ),
+        ),
+    );
+
+    final nullableListExtension = Extension(
+      (builder) => builder
+        ..name = '${element.name}FragmentableNullableList'
+        ..on = refer('List<${fragmentType.getDisplayString()}?>')
+        ..methods.add(
+          Method(
+            (builder) => builder
+              ..name = 'toModels'
+              ..lambda = false
+              ..returns = refer('List<${element.name}>')
+              ..body = Block(
+                (builder) => builder.statements.addAll([
+                  Code('final result = <${element.name}>[];\n'),
+                  Code('for (final fragment in this) {'),
+                  Code('  if (fragment == null) {'),
+                  Code('    continue;'),
+                  Code('  }\n'),
+                  Code('  result.add(fragment.toModel());'),
+                  Code('}\n'),
+                  Code('return result;'),
                 ]),
               ),
           ),
@@ -57,6 +83,7 @@ class FragmentableExtensionGenerator {
 
     if (shouldGenerateListExtension) {
       result.writeln(listExtension.accept(emitter));
+      result.writeln(nullableListExtension.accept(emitter));
     }
 
     return result.toString();

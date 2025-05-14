@@ -1,3 +1,4 @@
+// ignore_for_file: type=lint
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'example.dart';
@@ -18,6 +19,23 @@ extension Fragment2ModelFragmentable on Fragment2 {
   );
 }
 
-extension Fragment2ModelFragmentableFromList on List<Fragment2> {
-  List<Fragment2Model> toModels() => map((e) => e.toModel()).toList();
+extension Fragment2ModelFragmentableList on List<Fragment2> {
+  List<Fragment2Model> toModels() =>
+      map((fragment) => fragment.toModel()).toList();
+}
+
+extension Fragment2ModelFragmentableNullableList on List<Fragment2?> {
+  List<Fragment2Model> toModels() {
+    final result = <Fragment2Model>[];
+
+    for (final fragment in this) {
+      if (fragment == null) {
+        continue;
+      }
+
+      result.add(fragment.toModel());
+    }
+
+    return result;
+  }
 }
